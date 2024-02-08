@@ -1,0 +1,95 @@
+E:/Code/my_OpenMIPS/move/hdl/pc_reg.v {1 {vlog -work work +incdir+E:/Code/my_OpenMIPS/move/hdl E:/Code/my_OpenMIPS/move/hdl/pc_reg.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module pc_reg
+
+Top level modules:
+	pc_reg
+
+} {} {}} E:/Code/my_OpenMIPS/move/hdl/id_ex.v {1 {vlog -work work +incdir+E:/Code/my_OpenMIPS/move/hdl E:/Code/my_OpenMIPS/move/hdl/id_ex.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module id_ex
+
+Top level modules:
+	id_ex
+
+} {} {}} E:/Code/my_OpenMIPS/move/hdl/openmips_min_sopc.v {1 {vlog -work work +incdir+E:/Code/my_OpenMIPS/move/hdl E:/Code/my_OpenMIPS/move/hdl/openmips_min_sopc.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module openmips_min_sopc
+
+Top level modules:
+	openmips_min_sopc
+
+} {} {}} E:/Code/my_OpenMIPS/move/hdl/ex_mem.v {1 {vlog -work work +incdir+E:/Code/my_OpenMIPS/move/hdl E:/Code/my_OpenMIPS/move/hdl/ex_mem.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module ex_mem
+
+Top level modules:
+	ex_mem
+
+} {} {}} E:/Code/my_OpenMIPS/move/hdl/if_id.v {1 {vlog -work work +incdir+E:/Code/my_OpenMIPS/move/hdl E:/Code/my_OpenMIPS/move/hdl/if_id.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module if_id
+
+Top level modules:
+	if_id
+
+} {} {}} E:/Code/my_OpenMIPS/move/hdl/openmips.v {1 {vlog -work work +incdir+E:/Code/my_OpenMIPS/move/hdl E:/Code/my_OpenMIPS/move/hdl/openmips.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module openmips
+
+Top level modules:
+	openmips
+
+} {} {}} E:/Code/my_OpenMIPS/move/hdl/ex.v {1 {vlog -work work +incdir+E:/Code/my_OpenMIPS/move/hdl E:/Code/my_OpenMIPS/move/hdl/ex.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module ex
+
+Top level modules:
+	ex
+
+} {} {}} E:/Code/my_OpenMIPS/move/hdl/id.v {1 {vlog -work work +incdir+E:/Code/my_OpenMIPS/move/hdl E:/Code/my_OpenMIPS/move/hdl/id.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module id
+
+Top level modules:
+	id
+
+} {} {}} E:/Code/my_OpenMIPS/move/hdl/Regfile.v {1 {vlog -work work +incdir+E:/Code/my_OpenMIPS/move/hdl E:/Code/my_OpenMIPS/move/hdl/Regfile.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module Regfile
+
+Top level modules:
+	Regfile
+
+} {} {}} E:/Code/my_OpenMIPS/move/hdl/defines.v {1 {vlog -work work +incdir+E:/Code/my_OpenMIPS/move/hdl E:/Code/my_OpenMIPS/move/hdl/defines.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+
+} {} {}} E:/Code/my_OpenMIPS/move/hdl/mem.v {1 {vlog -work work +incdir+E:/Code/my_OpenMIPS/move/hdl E:/Code/my_OpenMIPS/move/hdl/mem.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module mem
+
+Top level modules:
+	mem
+
+} {} {}} E:/Code/my_OpenMIPS/move/simulation/openmips_min_sopc_tb.v {1 {vlog -work work +incdir+E:/Code/my_OpenMIPS/move/hdl E:/Code/my_OpenMIPS/move/simulation/openmips_min_sopc_tb.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module openmips_min_sopc_tb
+
+Top level modules:
+	openmips_min_sopc_tb
+
+} {} {}} E:/Code/my_OpenMIPS/move/hdl/inst_mem.v {1 {vlog -work work +incdir+E:/Code/my_OpenMIPS/move/hdl E:/Code/my_OpenMIPS/move/hdl/inst_mem.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module inst_mem
+
+Top level modules:
+	inst_mem
+
+} {} {}} E:/Code/my_OpenMIPS/move/hdl/mem_wb.v {1 {vlog -work work +incdir+E:/Code/my_OpenMIPS/move/hdl E:/Code/my_OpenMIPS/move/hdl/mem_wb.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module mem_wb
+
+Top level modules:
+	mem_wb
+
+} {} {}}
