@@ -1,0 +1,266 @@
+m255
+K3
+13
+cModel Technology
+Z0 dE:\Code\my_OpenMIPS\data_conflict\simulation
+vex
+Z1 I7]H6YJO0X72h@o8i7>azY0
+Z2 VZkG7Cf>Ub`N:QdbOOgYW<1
+Z3 dE:\Code\my_OpenMIPS\move\simulation
+Z4 w1701573094
+Z5 8E:/Code/my_OpenMIPS/move/hdl/ex.v
+Z6 FE:/Code/my_OpenMIPS/move/hdl/ex.v
+L0 3
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 o-work work -O0
+Z9 !s92 -work work +incdir+E:/Code/my_OpenMIPS/move/hdl -O0
+!i10b 1
+Z10 !s100 3k6Z^Y`1L_j>aCjO?ec]P3
+!s85 0
+Z11 !s108 1701573098.507000
+Z12 !s107 E:/Code/my_OpenMIPS/move/hdl/defines.v|E:/Code/my_OpenMIPS/move/hdl/ex.v|
+Z13 !s90 -reportprogress|300|-work|work|+incdir+E:/Code/my_OpenMIPS/move/hdl|E:/Code/my_OpenMIPS/move/hdl/ex.v|
+!s101 -O0
+vex_mem
+Z14 IG_<hP3GLJQeR9:iOUdfaF2
+Z15 Va78E9ii?T7KPzHbo7KNVa2
+R3
+Z16 w1699612208
+Z17 8E:/Code/my_OpenMIPS/move/hdl/ex_mem.v
+Z18 FE:/Code/my_OpenMIPS/move/hdl/ex_mem.v
+L0 2
+R7
+r1
+31
+R8
+Z19 !s100 @QND7MDhTBZAefX]__Z=m0
+Z20 !s108 1701573038.649000
+Z21 !s107 E:/Code/my_OpenMIPS/move/hdl/defines.v|E:/Code/my_OpenMIPS/move/hdl/ex_mem.v|
+Z22 !s90 -reportprogress|300|-work|work|+incdir+E:/Code/my_OpenMIPS/move/hdl|E:/Code/my_OpenMIPS/move/hdl/ex_mem.v|
+R9
+!i10b 1
+!s85 0
+!s101 -O0
+vid
+!i10b 1
+!s100 gmJ5aD4D`4QAoQgg5lBSE3
+IX9z>`aaha^G15]QUhDK3j1
+VO2BcD[Y3ebaO4fSWM0WWA0
+R3
+w1701573239
+8E:/Code/my_OpenMIPS/move/hdl/id.v
+FE:/Code/my_OpenMIPS/move/hdl/id.v
+L0 3
+R7
+r1
+!s85 0
+31
+!s108 1701573247.785000
+!s107 E:/Code/my_OpenMIPS/move/hdl/defines.v|E:/Code/my_OpenMIPS/move/hdl/id.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Code/my_OpenMIPS/move/hdl|E:/Code/my_OpenMIPS/move/hdl/id.v|
+!s101 -O0
+R8
+R9
+vid_ex
+Z23 I7jeR9IJK]ZLfoZCZCUjWF3
+Z24 V4YH_QfKRG51AE9aLlGf2U2
+R3
+Z25 w1699612231
+Z26 8E:/Code/my_OpenMIPS/move/hdl/id_ex.v
+Z27 FE:/Code/my_OpenMIPS/move/hdl/id_ex.v
+L0 3
+R7
+r1
+31
+R8
+R9
+Z28 !s100 L<MR[I:Cz_2]0Zm9jNJU]2
+Z29 !s108 1701573038.981000
+Z30 !s107 E:/Code/my_OpenMIPS/move/hdl/defines.v|E:/Code/my_OpenMIPS/move/hdl/id_ex.v|
+Z31 !s90 -reportprogress|300|-work|work|+incdir+E:/Code/my_OpenMIPS/move/hdl|E:/Code/my_OpenMIPS/move/hdl/id_ex.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vif_id
+Z32 I0?3ARo^N<[ILM@3H@S1<[0
+Z33 V?WLjRa_B7]<n3H?;Wj]4V1
+R3
+Z34 w1700742908
+Z35 8E:/Code/my_OpenMIPS/move/hdl/if_id.v
+Z36 FE:/Code/my_OpenMIPS/move/hdl/if_id.v
+L0 3
+R7
+r1
+31
+R8
+R9
+Z37 !s100 HNEf`;M0LlIoXafRJfdDo2
+Z38 !s108 1701573039.132000
+Z39 !s107 E:/Code/my_OpenMIPS/move/hdl/defines.v|E:/Code/my_OpenMIPS/move/hdl/if_id.v|
+Z40 !s90 -reportprogress|300|-work|work|+incdir+E:/Code/my_OpenMIPS/move/hdl|E:/Code/my_OpenMIPS/move/hdl/if_id.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vinst_mem
+Z41 IkV[HCCDczLZ^IM99eXJnb2
+Z42 VOKI6Ho6KJ^4DnzZm6<mMX1
+R3
+Z43 w1699186056
+Z44 8E:/Code/my_OpenMIPS/move/hdl/inst_mem.v
+Z45 FE:/Code/my_OpenMIPS/move/hdl/inst_mem.v
+L0 2
+R7
+r1
+31
+R8
+R9
+Z46 !s100 k[JXz4CH6R1mQMiMncK8C3
+Z47 !s108 1701573039.286000
+Z48 !s107 E:/Code/my_OpenMIPS/move/hdl/defines.v|E:/Code/my_OpenMIPS/move/hdl/inst_mem.v|
+Z49 !s90 -reportprogress|300|-work|work|+incdir+E:/Code/my_OpenMIPS/move/hdl|E:/Code/my_OpenMIPS/move/hdl/inst_mem.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vmem
+Z50 I@9@HQ6ZkFo1U=_WWNHjG<1
+Z51 Vn8e`?Nkf8>nL_:jWWcKG72
+R3
+Z52 w1699612291
+Z53 8E:/Code/my_OpenMIPS/move/hdl/mem.v
+Z54 FE:/Code/my_OpenMIPS/move/hdl/mem.v
+L0 5
+R7
+r1
+31
+R8
+R9
+Z55 !s100 Ck?Z[DaEF3niV6ak9NUK;1
+Z56 !s108 1701573039.455000
+Z57 !s107 E:/Code/my_OpenMIPS/move/hdl/defines.v|E:/Code/my_OpenMIPS/move/hdl/mem.v|
+Z58 !s90 -reportprogress|300|-work|work|+incdir+E:/Code/my_OpenMIPS/move/hdl|E:/Code/my_OpenMIPS/move/hdl/mem.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vmem_wb
+Z59 IFonO:a3i0kMEdC4hB9TQG1
+Z60 Voc]dQ[BZ=9<XDol1Ho>PC2
+R3
+Z61 w1699612282
+Z62 8E:/Code/my_OpenMIPS/move/hdl/mem_wb.v
+Z63 FE:/Code/my_OpenMIPS/move/hdl/mem_wb.v
+L0 2
+R7
+r1
+31
+R8
+R9
+Z64 !s100 NK9a>2E1:fT7=KoH`nRmg2
+Z65 !s108 1701573039.623000
+Z66 !s107 E:/Code/my_OpenMIPS/move/hdl/defines.v|E:/Code/my_OpenMIPS/move/hdl/mem_wb.v|
+Z67 !s90 -reportprogress|300|-work|work|+incdir+E:/Code/my_OpenMIPS/move/hdl|E:/Code/my_OpenMIPS/move/hdl/mem_wb.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vopenmips
+Z68 IQ`IbE6O>O`K4LZ?hfci^O3
+Z69 VS97c9U^_[5nN1Na><:3PZ3
+R3
+Z70 w1700744348
+Z71 8E:/Code/my_OpenMIPS/move/hdl/openmips.v
+Z72 FE:/Code/my_OpenMIPS/move/hdl/openmips.v
+L0 3
+R7
+r1
+31
+R8
+R9
+Z73 !s100 Z<k9KPIEGzMQA=DCzWX`>3
+Z74 !s108 1701573039.794000
+Z75 !s107 E:/Code/my_OpenMIPS/move/hdl/defines.v|E:/Code/my_OpenMIPS/move/hdl/openmips.v|
+Z76 !s90 -reportprogress|300|-work|work|+incdir+E:/Code/my_OpenMIPS/move/hdl|E:/Code/my_OpenMIPS/move/hdl/openmips.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vopenmips_min_sopc
+Z77 I^GOYbWke;WFf_O5@LI_?f1
+Z78 V>oQnH]7^FROW0cG3a6B;63
+R3
+Z79 w1700744824
+Z80 8E:/Code/my_OpenMIPS/move/hdl/openmips_min_sopc.v
+Z81 FE:/Code/my_OpenMIPS/move/hdl/openmips_min_sopc.v
+L0 2
+R7
+r1
+31
+R8
+R9
+Z82 !s100 EA[fJLEY>]iYJ_MMHI78@2
+Z83 !s108 1701573039.981000
+Z84 !s107 E:/Code/my_OpenMIPS/move/hdl/defines.v|E:/Code/my_OpenMIPS/move/hdl/openmips_min_sopc.v|
+Z85 !s90 -reportprogress|300|-work|work|+incdir+E:/Code/my_OpenMIPS/move/hdl|E:/Code/my_OpenMIPS/move/hdl/openmips_min_sopc.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vopenmips_min_sopc_tb
+Z86 I0SAYebn@MN5Pa1>mWBhYo3
+Z87 VjAlLFJz2iV<GeaoLO:T?d1
+R3
+Z88 w1699192032
+Z89 8E:/Code/my_OpenMIPS/move/simulation/openmips_min_sopc_tb.v
+Z90 FE:/Code/my_OpenMIPS/move/simulation/openmips_min_sopc_tb.v
+L0 4
+R7
+r1
+31
+R8
+R9
+Z91 !s100 dUPm>cTi=U6l:Z1m6?eLh2
+Z92 !s108 1701573040.477000
+Z93 !s107 E:/Code/my_OpenMIPS/move/simulation/openmips_min_sopc_tb.v|
+Z94 !s90 -reportprogress|300|-work|work|+incdir+E:/Code/my_OpenMIPS/move/hdl|E:/Code/my_OpenMIPS/move/simulation/openmips_min_sopc_tb.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vpc_reg
+Z95 IOK^UCBXQa>TaeQLVhSHUE1
+Z96 VK]mB7jecnjLzMW^lB7hDS0
+R3
+Z97 w1699102937
+Z98 8E:/Code/my_OpenMIPS/move/hdl/pc_reg.v
+Z99 FE:/Code/my_OpenMIPS/move/hdl/pc_reg.v
+L0 3
+R7
+r1
+31
+R8
+R9
+Z100 !s100 c<<?g11F`3HGhR=8@WP9F3
+Z101 !s108 1701573040.136000
+Z102 !s107 E:/Code/my_OpenMIPS/move/hdl/defines.v|E:/Code/my_OpenMIPS/move/hdl/pc_reg.v|
+Z103 !s90 -reportprogress|300|-work|work|+incdir+E:/Code/my_OpenMIPS/move/hdl|E:/Code/my_OpenMIPS/move/hdl/pc_reg.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vRegfile
+Z104 I7WIII:=?4J2a2QBV?9c]:1
+Z105 V^jV>22F:1TTalG1HhfQ2^2
+R3
+Z106 w1700743568
+Z107 8E:/Code/my_OpenMIPS/move/hdl/Regfile.v
+Z108 FE:/Code/my_OpenMIPS/move/hdl/Regfile.v
+L0 5
+R7
+r1
+31
+R8
+R9
+Z109 n@regfile
+Z110 !s100 HNR7WT3]Y2O_@W;f6Q7[70
+Z111 !s108 1701573040.307000
+Z112 !s107 E:/Code/my_OpenMIPS/move/hdl/defines.v|E:/Code/my_OpenMIPS/move/hdl/Regfile.v|
+Z113 !s90 -reportprogress|300|-work|work|+incdir+E:/Code/my_OpenMIPS/move/hdl|E:/Code/my_OpenMIPS/move/hdl/Regfile.v|
+!i10b 1
+!s85 0
+!s101 -O0
