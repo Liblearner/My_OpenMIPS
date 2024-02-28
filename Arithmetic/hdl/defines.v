@@ -4,13 +4,18 @@
 `define RstEnable       1'b1        //系统重置
 `define RstDisable     1'b0
 
-`define ReadEnable      1'b1       //读允许
+`define ReadEnable      1'b1        //读允许
 `define ReadDisable     1'b0
-`define WriteEnable     1'b1      //写允许
+`define WriteEnable     1'b1        //写允许
 `define WriteDisable    1'b0
 
-`define InstVaild       1'b1          //指令有效
+`define InstVaild       1'b1        //指令有效
 `define InstInvaild     1'b0
+
+`define Stop            1'b1        //流水线暂停标志
+`define NoStop          1'b0        //流水线不暂停
+
+`define ZeroWord        32'b0000_0000_0000_0000_0000_0000_0000_0000
 
 //指令码InstCode[31:26]
 `define EXE_ORI         6'b001101   //ORI

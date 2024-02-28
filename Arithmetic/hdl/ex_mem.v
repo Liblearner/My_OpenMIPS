@@ -10,6 +10,8 @@ module ex_mem(
     input wire[`RegBus] ex_lo,
     input wire ex_whilo,
 
+    input wire[5:0] stall,
+
     output reg[`RegAddrBus] mem_wd,
     output reg mem_wreg,
     output reg[`RegBus] mem_wdata,
@@ -17,6 +19,8 @@ module ex_mem(
     output reg mem_whilo,
     output reg[`RegBus] mem_hi,
     output reg[`RegBus] mem_lo
+
+    
 );
 
     always @(posedge clk) begin
@@ -30,7 +34,17 @@ module ex_mem(
         mem_whilo <= 1'b0;
         end
 
-        else begin
+        else if(stall[3] == `Stop && stall[4] == `NoStop)begin
+        mem_wd <= `RegNopAddr;
+        mem_wreg <= `WriteDisable;
+        mem_wdata <= `ZeroWord;
+
+        mem_hi <= `ZeroWord;
+        mem_Lo <= `ZeroWord;
+        mem_whilo <= `WriteDisable;
+        end
+        
+        else if(stall[3] == `NoStop)begin
         mem_wd <= ex_wd;
         mem_wdata <= ex_wdata;
         mem_wreg <= ex_wreg;

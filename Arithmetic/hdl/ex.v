@@ -32,6 +32,8 @@ module ex(
     output reg [`RegBus] hi_o,
     output reg [`RegBus] lo_o,
     output reg whilo_o
+
+    output wire stallreq
 );
 
     reg[`RegBus] logicout;
@@ -39,6 +41,8 @@ module ex(
     reg[`RegBus] moveres;
     reg[`RegBus] HI;
     reg[`RegBus] LO;
+
+    assign stallreq <= `NoStop;
 
     //运算用的变量
     wire ov_sum;                    //保存溢出情况

@@ -30,6 +30,8 @@ module id(
     output reg[`RegBus] reg2_data_o,
     output reg[`RegAddrBus] wd_o,//要写入的目的寄存器的地址
     output reg wreg_o//指令是否需要写入目的寄存器
+
+    output wire stallreq
 );
 
 //第一步：取指令中指令码（不仅仅是针对I型指令）
@@ -42,6 +44,8 @@ wire [5:0] op4 = inst[20:16];//rt,部分操作数
 reg[`RegBus] imm;
 //指示指令是否有效
 reg instvaild;
+
+assign stallreq = `NoStop;
 
 /*第一阶段译码,
 向ALU传递操作码与选择码，

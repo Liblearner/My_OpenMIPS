@@ -4,6 +4,7 @@ module pc_reg(
 
     input wire clk,
     input wire rst,
+    input wire[5:0] stall,//来自控制模块CTRL
 
     output reg[`InstAddrBus] pc,
     output reg ce
@@ -22,7 +23,7 @@ end
 always @(posedge clk) begin
     if(ce == `ChipDisable)
         pc <= 32'b0;
-    else 
+    else if(stall[0] == `NoStop)
         pc <= pc+4'h4;
 
 end

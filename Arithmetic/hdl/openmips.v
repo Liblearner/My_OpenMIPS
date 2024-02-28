@@ -77,13 +77,19 @@ module openmips(
     wire [`RegBus] hilo_lo_i;
     wire hilo_we_i;
 
+    //连接ctrl与各模块之间的变量
+    wire [5:0] stall;
+    wire stallreq_from_ex;
+    wire stallreq_from_id;
+
 
     //模块实例化
     pc_reg pc_reg0(
         .clk(clk),
         .rst(rst),
         .pc(pc),
-        .ce(rom_ce_o)
+        .ce(rom_ce_o),
+        .stall(stall)
     );
     //pc值即为送入rom的地址
     assign rom_addr_i = pc;
@@ -95,6 +101,7 @@ module openmips(
         .if_inst(rom_data_o),
         .id_pc(id_pc_i),
         .id_inst(id_inst_i)
+        .stall(stall)
     );
     //id实例化,注意其既与id_ex相连，也有从regfile中取数的数据通路
     id id0(
@@ -121,6 +128,8 @@ module openmips(
         .reg2_data_o(id_reg2_data_o),
         .wd_o(id_wd_o),
         .wreg_o(id_wreg_o)
+
+        .stallreq(stallreq_from_id)
     );
 
     Regfile Regfile0(
@@ -151,7 +160,8 @@ module openmips(
         .ex_reg1(ex_reg1_i),
         .ex_reg2(ex_reg2_i),
         .ex_wd(ex_wd_i),
-        .ex_wreg(ex_wreg_i)
+        .ex_wreg(ex_wreg_i),
+        .stall(stall)
     );
     //ex实例化
     ex ex0(
@@ -179,7 +189,9 @@ module openmips(
 
         .hi_o(ex_hi_o),
         .lo_o(ex_lo_o),
-        .whilo_o(ex_whilo_o)
+        .whilo_o(ex_whilo_o),
+
+        .stallreq(stallreq_from_ex)
     );
     //ex_mem实例化
     ex_mem ex_mem0(
@@ -199,7 +211,9 @@ module openmips(
 
         .mem_hi(mem_hi_i),
         .mem_lo(mem_lo_i),
-        .mem_whilo(mem_whilo_i)
+        .mem_whilo(mem_whilo_i),
+
+        .stall(stall)
     );
     //mem实例化
     mem mem0(
@@ -235,7 +249,9 @@ module openmips(
 
         .wb_whilo(hilo_we_i),
         .wb_lo(hilo_lo_i),
-        .wb_hi(hilo_hi_i)
+        .wb_hi(hilo_hi_i),
+
+        .stall(stall)
     );
 
     //hilo实例化
@@ -248,4 +264,13 @@ module openmips(
         .hi_o(hilo_hi_o),
         .lo_o(hilo_lo_o)
     );
+
+    //ctrl模块实例化
+    ctrl ctrl0(
+        .rst(rst),
+        .stall(stall),
+        .stallreq_from_ex(stallreq_from_ex),
+        .stallreq_from_id(stallreq_from_id)
+    );
+
 endmodule
