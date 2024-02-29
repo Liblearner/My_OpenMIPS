@@ -336,6 +336,20 @@ always @(*) begin
                                     wreg_o <= `WriteDisable;
                                     instvaild <= `InstVaild;
                             end
+                            `DIV:begin
+                                    aluop_o <= `EXE_DIV_OP;
+                                    reg1_read_o <= 1'b1;
+                                    reg2_read_o <= 1'b1;
+                                    wreg_o <= `WriteDisable;
+                                    instvaild <= `InstVaild;
+                            end
+                            `DIVU:begin
+                                    aluop_o <= `EXE_DIVU_OP;
+                                    reg1_read_o <= 1'b1;
+                                    reg2_read_o <= 1'b1;
+                                    wreg_o <= `WriteDisable;
+                                    instvaild <= `InstVaild;
+                            end
                             default:begin
                             end
                         endcase//end case op3 inst[5:0]
@@ -410,6 +424,38 @@ always @(*) begin
                     reg2_read_o <= 1'b1;
                     wreg_o <= `WriteEnable;
                     instvaild <= `InstVaild; 
+                    end
+                    `MADD:begin
+                    aluop_o <= `EXE_MADD_OP;
+                    alusel_o <= `EXE_RES_MUL;
+                    reg1_read_o <= 1'b1;
+                    reg2_read_o <= 1'b1;
+                    wreg_o <= `WriteDisable;
+                    instvaild <= `Instvaild;
+                    end
+                    `MADDU:begin
+                    aluop_o <= `EXE_MADDU_OP;
+                    alusel_o <= `EXE_RES_MUL;
+                    reg1_read_o <= 1'b1;
+                    reg2_read_o <= 1'b1;
+                    wreg_o <= `WriteDisable;
+                    instvaild <= `Instvaild;
+                    end
+                    `MSUB:begin
+                    aluop_o <= `EXE_SUB_OP;
+                    alusel_o <= `EXE_RES_MUL;
+                    reg1_read_o <= 1'b1;
+                    reg2_read_o <= 1'b1;
+                    wreg_o <= `WriteDisable;
+                    instvaild <= `Instvaild;
+                    end
+                    `MSUBU:begin
+                    aluop_o <= `EXE_SUBU_OP;
+                    alusel_o <= `EXE_RES_MUL;
+                    reg1_read_o <= 1'b1;
+                    reg2_read_o <= 1'b1;
+                    wreg_o <= `WriteDisable;
+                    instvaild <= `InstVaild;
                     end
                     default:begin
                     end

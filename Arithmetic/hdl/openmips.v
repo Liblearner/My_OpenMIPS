@@ -82,6 +82,13 @@ module openmips(
     wire stallreq_from_ex;
     wire stallreq_from_id;
 
+    //连接EX与MEM模块，用于多周期的MADD、MADDU、MSUB、MSUBU等指令
+    wire[`DoubleRegBus] hilo_temp_o;
+    wire[1:0] cnt_o;
+
+    wire[`DoubleRegBus] hilo_temp_i;
+    wire[1:0] cnt_i;
+
 
     //模块实例化
     pc_reg pc_reg0(
@@ -183,6 +190,9 @@ module openmips(
         .mem_lo_i(mem_lo_o),
         .mem_whilo_i(mem_whilo_o),
 
+        .hilo_temp_i(hilo_temp_i),
+        .cnt_i(cnt_i),
+
         .wdata(ex_wdata_o),
         .wd_o(ex_wd_o),
         .wreg_o(ex_wreg_o),
@@ -190,6 +200,9 @@ module openmips(
         .hi_o(ex_hi_o),
         .lo_o(ex_lo_o),
         .whilo_o(ex_whilo_o),
+
+        .hilo_temp_o(hilo_temp_o),
+        .cnt_o(cnt_o),
 
         .stallreq(stallreq_from_ex)
     );
@@ -205,6 +218,9 @@ module openmips(
         .ex_lo(ex_lo_o),
         .ex_whilo(ex_whilo_o),
 
+        .hilo_temp_i(hilo_temp_o),
+        .cnt_i(cnt_o),
+
         .mem_wd(mem_wd_i),
         .mem_wreg(mem_wreg_i),
         .mem_wdata(mem_wdata_i),
@@ -212,6 +228,9 @@ module openmips(
         .mem_hi(mem_hi_i),
         .mem_lo(mem_lo_i),
         .mem_whilo(mem_whilo_i),
+
+        .hilo_temp_o(hilo_temp_i),
+        .cnt_o(cnt_i),
 
         .stall(stall)
     );

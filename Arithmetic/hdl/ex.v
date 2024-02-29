@@ -24,14 +24,31 @@ module ex(
     input wire [`RegBus] mem_lo_i,
     input wire mem_whilo_i,
 
+    //实现累乘增加的输入
+    input wire[`DoubleRegBus] hilo_temp_i,
+    input wire[1:0] cnt_i,
+    
+    //实现除法增加的输入
+    input wire[`DoubleRegBus] div_result_i,
+    input wire div_ready_i,
+
     output reg[`RegBus] wdata,
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o,
 
+    output reg[`DoubleRegBus] hilo_temp_o,
+    output reg[1:0] cnt_o,
+
     //连接到HI与LO
     output reg [`RegBus] hi_o,
     output reg [`RegBus] lo_o,
-    output reg whilo_o
+    output reg whilo_o,
+
+    //除法输出
+    output reg[`RegBus] div_opdata1_o,
+    output reg[`RegBus] div_opdata2_o,
+    output reg div_start_o,
+    output reg signed_div_o,
 
     output wire stallreq
 );
@@ -55,8 +72,11 @@ module ex(
     wire[`RegBus] opdata1_mult;     //乘法中的被乘数
     wire[`RegBus] opdata2_mult;     //乘法中的乘数
     wire[`DoubleRegBus] hilo_temp;  //临时保存乘法结果，宽度64bit
+    reg[`DoubleRegBus] hilo_temp1;  //累乘命令临时结果保存
     reg[`DoubleRegBus] mulres;      //保存乘法结果，宽度64bit
 
+    reg stallreq_for_madd_msub;     //累乘请求暂停
+    reg stallreq_for_div;           //除法请求暂停
 
 //第一阶段，根据aluop码进行运算或处理,logic,shift.move与arithmetic分always块
 
@@ -119,25 +139,80 @@ always @(*) begin
 end
 
 //取得乘法操作的操作数，如果是有符号除法且操作数是负数，则取反+1
-assign opdata1_mult = (((aluop == `EXE_MUL_OP) || (aluop == `EXE_MULT_OP)) 
+assign opdata1_mult = (((aluop == `EXE_MUL_OP) || (aluop == `EXE_MULT_OP)
+                        ||(aluop == `EXE_MADD_OP) || (aluop == `EXE_MSUB_OP)) 
                         && (reg1[31] == 1'b1)) ? (~reg1 + 1) : reg1;
-assign opdata2_mult = (((aluop == `EXE_MUL_OP) || (aluop == `EXE_MULT_OP)) 
+assign opdata2_mult = (((aluop == `EXE_MUL_OP) || (aluop == `EXE_MULT_OP)
+                        ||(aluop == `EXE_MADD_OP) || (aluop == `EXE_MSUB_OP)) 
                         && (reg2[31] == 1'b1)) ? (~reg2 + 1) : reg2;
+
 assign hilo_temp = opdata1_mult * opdata2_mult;
 
 always@(*) begin
     if(rst == `RstEnable)
         mulres <= 64'b0;
-    else if((aluop == `EXE_MUL_OP) || (aluop == `EXE_MULT_OP))begin
+    else if((aluop == `EXE_MUL_OP) || (aluop == `EXE_MULT_OP)
+            (aluop == `EXE_MADD_OP) ||(aluop == `EXE_MSUB_OP))begin
         //最高位异或，不一样说明是异号相乘
         if(reg1[31] ^ reg2[31] == 1'b1)
             mulres <= ~hilo_temp + 1;
+        //有符号数但同号的情况
         else
             mulres <= hilo_temp;
     end
+    //无符号数
     else
         mulres <= hilo_temp;
 end
+
+always @(*) begin
+    if(rst == `RstEnable)begin
+        hilo_temp_o <= {`ZeroWord, `ZeroWord};
+        cnt_o <= 2'b00;
+        stallreq_for_madd_msub <= `NoStop;
+    end
+    else begin
+        case(aluop)
+        `EXE_MADD_OP, `EXE_MADDU_OP:begin
+            //双周期计算的第一个周期
+            if(cnt_i == 2'b00) begin
+                hilo_temp_o <= mulres;
+                cnt_o <= 2'b01;
+                hilo_temp1 <= {`ZeroWord, `ZeroWord};
+                stallreq_for_madd_msub <= `Stop;
+            end
+            //双周期计算的第二个周期
+            else if(cnt_i == 2'b01) begin
+                hilo_temp_o <= {`ZeroWord, `ZeroWord};
+                cnt_o <= 2'b10;
+                hilo_temp1 <= hilo_temp_i + {HI, LO};
+                stallreq_for_madd_msub <= `NoStop;
+            end
+        end
+        `EXE_MSUB_OP, `EXE_MSUBU_OP:begin
+            if(cnt_i == 2'b00) begin
+                hilo_temp_o <= ~mulres + 1;
+                cnt_o <= 2'b01;
+                hilo_temp1 <= {`ZeroWord, `ZeroWord};
+                stallreq_for_madd_msub <= `Stop;
+            end
+            else if(cnt_i == 2'b01)begin
+                hilo_temp_o <= {`ZeroWord, `ZeroWord};
+                cnt_o <= 2'b01;
+                hilo_temp1 <= hilo_temp_i + {HI, LO};
+                stallreq_for_madd_msub <= `Stop;
+            end
+        end
+        default:begin
+            hilo_temp_o <= {`ZeroWord, `ZeroWord};
+            cnt_o <= 2'b00;
+            stallreq_for_madd_msub <= `NoStop;
+        end
+        endcase
+    end
+end
+
+
 
 
 
@@ -284,12 +359,25 @@ always @(*) begin
     endcase
 end
 
+always @(*) begin
+    stallreq = stallreq_for_madd_msub;
+end
+
+
 //对于MTHI与MTLO，实现whilo_o与HI与LO的写输出
 always @ (*) begin
 	if(rst == `RstEnable) begin
 		whilo_o <= `WriteDisable;
 		hi_o <= 32'b0;
 		lo_o <= 32'b0;		
+    end else if((aluop == `EXE_MSUB_OP)||(aluop == `EXE_MSUBU_OP))begin 
+        whilo_o <= `WriteEnable;
+        hi_o <= hilo_temp1[63:32];
+        lo_o <= hilo_temp1[31:0];
+    end else if((aluop == `EXE_MADD_OP)||(aluop == `EXE_MADDU_OP))begin 
+        whilo_o <= `WriteEnable;
+        hi_o <= hilo_temp1[63:32];
+        lo_o <= hilo_temp1[31:0];
     end else if((aluop == `EXE_MULT_OP) || (aluop == `EXE_MULTU_OP)) begin
         whilo_o <= `WriteEnable;
         hi_o <= mulres[63:32];

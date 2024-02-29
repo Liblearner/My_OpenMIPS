@@ -12,6 +12,12 @@ module ex_mem(
 
     input wire[5:0] stall,
 
+    input wire[`DoubleRegBus] hilo_i,
+    input wire[1:0] cnt_i,
+
+    output reg[`DoubleRegBus] hilo_o,
+    output reg[1:0] cnt_o,
+
     output reg[`RegAddrBus] mem_wd,
     output reg mem_wreg,
     output reg[`RegBus] mem_wdata,
@@ -32,6 +38,9 @@ module ex_mem(
         mem_hi <= 32'b0;
         mem_lo <= 32'b0;
         mem_whilo <= 1'b0;
+
+        hilo_o <= {`ZeroWord, `ZeroWord};
+        cnt_o <= 2'b00;
         end
 
         else if(stall[3] == `Stop && stall[4] == `NoStop)begin
@@ -42,6 +51,9 @@ module ex_mem(
         mem_hi <= `ZeroWord;
         mem_Lo <= `ZeroWord;
         mem_whilo <= `WriteDisable;
+
+        hilo_o <= hilo_i;
+        cnt_o <= cnt_i;
         end
         
         else if(stall[3] == `NoStop)begin
@@ -52,6 +64,9 @@ module ex_mem(
         mem_hi <= ex_hi;
         mem_lo <= ex_lo;
         mem_whilo <= ex_whilo;
+
+        hilo_o <= hilo_i;
+        cnt_o <= cnt_i;
         end
     end
 
