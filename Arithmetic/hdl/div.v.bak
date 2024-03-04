@@ -1,5 +1,4 @@
 //试商法实现除法
-`include<defines.v>
 module div(
     input wire clk,
     input wire rst,

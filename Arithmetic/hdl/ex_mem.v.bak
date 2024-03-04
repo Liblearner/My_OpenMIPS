@@ -49,7 +49,7 @@ module ex_mem(
         mem_wdata <= `ZeroWord;
 
         mem_hi <= `ZeroWord;
-        mem_lo <= `ZeroWord;
+        mem_Lo <= `ZeroWord;
         mem_whilo <= `WriteDisable;
 
         hilo_o <= hilo_i;

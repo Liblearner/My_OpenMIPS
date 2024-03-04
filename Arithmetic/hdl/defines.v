@@ -70,7 +70,7 @@
 `define MSUBU           6'b000101
 
 `define DIV             6'b011010
-`define EXE_DIVU        6'b011011
+`define DIVU            6'b011011
 
 `define EXE_NOP         6'b000000
 `define SSNOP           32'b0
@@ -144,9 +144,12 @@
 `define EXE_MSUB_OP     8'b10101010
 `define EXE_MSUBU_OP    8'b10101011
 
-`define EXE_MULT_OP  8'b00011000
-`define EXE_MULTU_OP  8'b00011001
-`define EXE_MUL_OP  8'b10101001
+`define EXE_MULT_OP     8'b00011000
+`define EXE_MULTU_OP    8'b00011001
+`define EXE_MUL_OP      8'b10101001
+
+`define EXE_DIV_OP      8'b00011010
+`define EXE_DIVU_OP     8'b00011011
 
 `define EXE_RES_LOGIC   3'b001    //ALU各选择码
 `define EXE_RES_SHIFT   3'b010

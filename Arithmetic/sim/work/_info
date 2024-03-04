@@ -1,0 +1,361 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dD:/ModelSim
+vctrl
+Z0 !s110 1709561391
+!i10b 1
+!s100 5P6nBCK8ll6E=Cgb=be?]3
+I_1<kKdEZZMbnNXNDegzzl3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dE:/Project/My_OpenMIPS/Arithmetic/sim
+w1709559860
+8E:/Project/My_OpenMIPS/Arithmetic/hdl/ctrl.v
+FE:/Project/My_OpenMIPS/Arithmetic/hdl/ctrl.v
+L0 2
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1709561391.000000
+!s107 E:/Project/My_OpenMIPS/Arithmetic/hdl/defines.v|E:/Project/My_OpenMIPS/Arithmetic/hdl/ctrl.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/My_OpenMIPS/Arithmetic/hdl|-stats=none|E:/Project/My_OpenMIPS/Arithmetic/hdl/ctrl.v|
+!i113 1
+Z5 o-work work
+Z6 !s92 -work work +incdir+E:/Project/My_OpenMIPS/Arithmetic/hdl
+Z7 tCvgOpt 0
+vdiv
+R0
+!i10b 1
+!s100 OO;`z3WaaBP7XGmN<3mED3
+IzDZXo[LSZbn7U`z6UNZGg0
+R1
+R2
+w1709559988
+8E:/Project/My_OpenMIPS/Arithmetic/hdl/div.v
+FE:/Project/My_OpenMIPS/Arithmetic/hdl/div.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/Project/My_OpenMIPS/Arithmetic/hdl/defines.v|E:/Project/My_OpenMIPS/Arithmetic/hdl/div.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/My_OpenMIPS/Arithmetic/hdl|-stats=none|E:/Project/My_OpenMIPS/Arithmetic/hdl/div.v|
+!i113 1
+R5
+R6
+R7
+vex
+Z8 !s110 1709561392
+!i10b 1
+!s100 T?h^:njIkR5H4l8ToBg5Z1
+IcZaP[>]bdjl_eaYli?WSS0
+R1
+R2
+w1709560611
+8E:/Project/My_OpenMIPS/Arithmetic/hdl/ex.v
+FE:/Project/My_OpenMIPS/Arithmetic/hdl/ex.v
+L0 3
+R3
+r1
+!s85 0
+31
+Z9 !s108 1709561392.000000
+!s107 E:\Project\My_OpenMIPS\Arithmetic\hdl\defines.v|E:/Project/My_OpenMIPS/Arithmetic/hdl/ex.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Project/My_OpenMIPS/Arithmetic/hdl/ex.v|
+!i113 1
+R5
+R7
+vex_mem
+R0
+!i10b 1
+!s100 [c]fc3OiOn2VMHlW0BEEz3
+I]`JZn4]Q;Vj`b9l44lMiZ2
+R1
+R2
+w1709561162
+8E:/Project/My_OpenMIPS/Arithmetic/hdl/ex_mem.v
+FE:/Project/My_OpenMIPS/Arithmetic/hdl/ex_mem.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/Project/My_OpenMIPS/Arithmetic/hdl/defines.v|E:/Project/My_OpenMIPS/Arithmetic/hdl/ex_mem.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/My_OpenMIPS/Arithmetic/hdl|-stats=none|E:/Project/My_OpenMIPS/Arithmetic/hdl/ex_mem.v|
+!i113 1
+R5
+R6
+R7
+vhilo_reg
+R0
+!i10b 1
+!s100 ]IIMiMe7<8V5_IF@D05^`1
+IVW=cmTO2A=:8;iUdRQk;82
+R1
+R2
+Z10 w1707399051
+8E:/Project/My_OpenMIPS/Arithmetic/hdl/hilo_reg.v
+FE:/Project/My_OpenMIPS/Arithmetic/hdl/hilo_reg.v
+L0 5
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/Project/My_OpenMIPS/Arithmetic/hdl/defines.v|E:/Project/My_OpenMIPS/Arithmetic/hdl/hilo_reg.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/My_OpenMIPS/Arithmetic/hdl|-stats=none|E:/Project/My_OpenMIPS/Arithmetic/hdl/hilo_reg.v|
+!i113 1
+R5
+R6
+R7
+vid
+R8
+!i10b 1
+!s100 ;FG8JR>O2CfcPI3MR3V:g1
+IB<Gc9ec_6V`1i7C[<74ZA3
+R1
+R2
+w1709560922
+8E:/Project/My_OpenMIPS/Arithmetic/hdl/id.v
+FE:/Project/My_OpenMIPS/Arithmetic/hdl/id.v
+L0 3
+R3
+r1
+!s85 0
+31
+R9
+!s107 E:\Project\My_OpenMIPS\Arithmetic\hdl\defines.v|E:/Project/My_OpenMIPS/Arithmetic/hdl/id.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Project/My_OpenMIPS/Arithmetic/hdl/id.v|
+!i113 1
+R5
+R7
+vid_ex
+R0
+!i10b 1
+!s100 K7^j2oeX3Q^WikWefN^3D0
+IUe[Q0c9=E^FjL4o]Y4JU?0
+R1
+R2
+w1709127825
+8E:/Project/My_OpenMIPS/Arithmetic/hdl/id_ex.v
+FE:/Project/My_OpenMIPS/Arithmetic/hdl/id_ex.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/Project/My_OpenMIPS/Arithmetic/hdl/defines.v|E:/Project/My_OpenMIPS/Arithmetic/hdl/id_ex.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/My_OpenMIPS/Arithmetic/hdl|-stats=none|E:/Project/My_OpenMIPS/Arithmetic/hdl/id_ex.v|
+!i113 1
+R5
+R6
+R7
+vif_id
+R0
+!i10b 1
+!s100 PA<]FKaXbjG<;NffolmX`3
+IBAkXUb94>BOlOae9N^2360
+R1
+R2
+w1709127436
+8E:/Project/My_OpenMIPS/Arithmetic/hdl/if_id.v
+FE:/Project/My_OpenMIPS/Arithmetic/hdl/if_id.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/Project/My_OpenMIPS/Arithmetic/hdl/defines.v|E:/Project/My_OpenMIPS/Arithmetic/hdl/if_id.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/My_OpenMIPS/Arithmetic/hdl|-stats=none|E:/Project/My_OpenMIPS/Arithmetic/hdl/if_id.v|
+!i113 1
+R5
+R6
+R7
+vinst_mem
+R0
+!i10b 1
+!s100 Li97fWa?k4c_5^3`b]5j@0
+I8izcGFb7OILn`CFZKB;Ul1
+R1
+R2
+R10
+8E:/Project/My_OpenMIPS/Arithmetic/hdl/inst_mem.v
+FE:/Project/My_OpenMIPS/Arithmetic/hdl/inst_mem.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/Project/My_OpenMIPS/Arithmetic/hdl/defines.v|E:/Project/My_OpenMIPS/Arithmetic/hdl/inst_mem.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/My_OpenMIPS/Arithmetic/hdl|-stats=none|E:/Project/My_OpenMIPS/Arithmetic/hdl/inst_mem.v|
+!i113 1
+R5
+R6
+R7
+vmem
+R0
+!i10b 1
+!s100 8CLDA8[ZQcnLO9WHz8:ka2
+IIN`4N:beEgUYQVB;4NiAM3
+R1
+R2
+R10
+8E:/Project/My_OpenMIPS/Arithmetic/hdl/mem.v
+FE:/Project/My_OpenMIPS/Arithmetic/hdl/mem.v
+L0 5
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/Project/My_OpenMIPS/Arithmetic/hdl/defines.v|E:/Project/My_OpenMIPS/Arithmetic/hdl/mem.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/My_OpenMIPS/Arithmetic/hdl|-stats=none|E:/Project/My_OpenMIPS/Arithmetic/hdl/mem.v|
+!i113 1
+R5
+R6
+R7
+vmem_wb
+R0
+!i10b 1
+!s100 aJ8:klmBk3fF5Tfb>WQ4A2
+I8IbRGeKdlD2CZSORdRRA@0
+R1
+R2
+w1709128383
+8E:/Project/My_OpenMIPS/Arithmetic/hdl/mem_wb.v
+FE:/Project/My_OpenMIPS/Arithmetic/hdl/mem_wb.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/Project/My_OpenMIPS/Arithmetic/hdl/defines.v|E:/Project/My_OpenMIPS/Arithmetic/hdl/mem_wb.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/My_OpenMIPS/Arithmetic/hdl|-stats=none|E:/Project/My_OpenMIPS/Arithmetic/hdl/mem_wb.v|
+!i113 1
+R5
+R6
+R7
+vopenmips
+R0
+!i10b 1
+!s100 7K4ZnEhIfUmF@POXYckJl2
+I0Eb2Dhb0@W=9eblmQhd_M2
+R1
+R2
+w1709561385
+8E:/Project/My_OpenMIPS/Arithmetic/hdl/openmips.v
+FE:/Project/My_OpenMIPS/Arithmetic/hdl/openmips.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/Project/My_OpenMIPS/Arithmetic/hdl/defines.v|E:/Project/My_OpenMIPS/Arithmetic/hdl/openmips.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/My_OpenMIPS/Arithmetic/hdl|-stats=none|E:/Project/My_OpenMIPS/Arithmetic/hdl/openmips.v|
+!i113 1
+R5
+R6
+R7
+vopenmips_min_sopc
+R0
+!i10b 1
+!s100 DD=f<f6k7nzi`Y>P7XB8O1
+IISegaMe0gB8516_nU?ki^2
+R1
+R2
+R10
+8E:/Project/My_OpenMIPS/Arithmetic/hdl/openmips_min_sopc.v
+FE:/Project/My_OpenMIPS/Arithmetic/hdl/openmips_min_sopc.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 E:/Project/My_OpenMIPS/Arithmetic/hdl/defines.v|E:/Project/My_OpenMIPS/Arithmetic/hdl/openmips_min_sopc.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/My_OpenMIPS/Arithmetic/hdl|-stats=none|E:/Project/My_OpenMIPS/Arithmetic/hdl/openmips_min_sopc.v|
+!i113 1
+R5
+R6
+R7
+vopenmips_min_sopc_tb
+R8
+!i10b 1
+!s100 coQo;J>gcWJT:;<5cdi391
+I5ieLXKkV^@2k_=6jKmzN01
+R1
+R2
+w1709560962
+8E:/Project/My_OpenMIPS/Arithmetic/hdl/openmips_min_sopc_t.v
+FE:/Project/My_OpenMIPS/Arithmetic/hdl/openmips_min_sopc_t.v
+L0 36
+R3
+r1
+!s85 0
+31
+R9
+!s107 E:/Project/My_OpenMIPS/Arithmetic/hdl/defines.v|E:/Project/My_OpenMIPS/Arithmetic/hdl/openmips_min_sopc_t.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/My_OpenMIPS/Arithmetic/hdl|-stats=none|E:/Project/My_OpenMIPS/Arithmetic/hdl/openmips_min_sopc_t.v|
+!i113 1
+R5
+R6
+R7
+vpc_reg
+R8
+!i10b 1
+!s100 NT]>MebZ>S07:c[o6AKR52
+I`FF<@zPSk7D>IcY^NIL@d2
+R1
+R2
+w1709127116
+8E:/Project/My_OpenMIPS/Arithmetic/hdl/pc_reg.v
+FE:/Project/My_OpenMIPS/Arithmetic/hdl/pc_reg.v
+L0 3
+R3
+r1
+!s85 0
+31
+R9
+!s107 E:/Project/My_OpenMIPS/Arithmetic/hdl/defines.v|E:/Project/My_OpenMIPS/Arithmetic/hdl/pc_reg.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/My_OpenMIPS/Arithmetic/hdl|-stats=none|E:/Project/My_OpenMIPS/Arithmetic/hdl/pc_reg.v|
+!i113 1
+R5
+R6
+R7
+vRegfile
+R8
+!i10b 1
+!s100 X8YS0]FZhU5GLXNS<eh:W0
+ID2T^G]dCboHbLDZ_Fbg5J2
+R1
+R2
+R10
+8E:/Project/My_OpenMIPS/Arithmetic/hdl/Regfile.v
+FE:/Project/My_OpenMIPS/Arithmetic/hdl/Regfile.v
+L0 5
+R3
+r1
+!s85 0
+31
+R9
+!s107 E:/Project/My_OpenMIPS/Arithmetic/hdl/defines.v|E:/Project/My_OpenMIPS/Arithmetic/hdl/Regfile.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/My_OpenMIPS/Arithmetic/hdl|-stats=none|E:/Project/My_OpenMIPS/Arithmetic/hdl/Regfile.v|
+!i113 1
+R5
+R6
+R7
+n@regfile

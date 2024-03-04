@@ -59,6 +59,8 @@ module ex(
     reg[`RegBus] HI;
     reg[`RegBus] LO;
 
+    assign stallreq = `NoStop;
+
     //运算用的变量
     wire ov_sum;                    //保存溢出情况
     wire reg1_eq_reg2;              //第一个操作数是否等于第二个操作数

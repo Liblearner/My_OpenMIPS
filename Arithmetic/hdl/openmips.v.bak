@@ -142,7 +142,7 @@ module openmips(
         .reg1_data_o(id_reg1_data_o),
         .reg2_data_o(id_reg2_data_o),
         .wd_o(id_wd_o),
-        .wreg_o(id_wreg_o),
+        .wreg_o(id_wreg_o)
 
         .stallreq(stallreq_from_id)
     );
@@ -212,13 +212,6 @@ module openmips(
         .hilo_temp_o(hilo_temp_o),
         .cnt_o(cnt_o),
 
-        .div_opdata1_o(div_opdata1),
-        .div_opdata2_o(div_opdata2),
-        .div_start_o(div_start),
-        .signed_div_o(signed_div),
-        .div_result_i(div_result),
-        .div_ready_i(div_ready),
-
         .stallreq(stallreq_from_ex)
     );
     //ex_mem实例化
@@ -233,7 +226,7 @@ module openmips(
         .ex_lo(ex_lo_o),
         .ex_whilo(ex_whilo_o),
 
-        .hilo_i(hilo_temp_o),
+        .hilo_temp_i(hilo_temp_o),
         .cnt_i(cnt_o),
 
         .mem_wd(mem_wd_i),
@@ -244,11 +237,19 @@ module openmips(
         .mem_lo(mem_lo_i),
         .mem_whilo(mem_whilo_i),
 
-        .hilo_o(hilo_temp_i),
+        .hilo_temp_o(hilo_temp_i),
         .cnt_o(cnt_i),
 
+        .div_opdata1_o(div_opdata1),
+        .div_opdata2_o(div_opdata2),
+        .div_start_o(div_start),
+        .signed_div_o(signed_div),
+        .div_result_i(div_result),
+        .div_ready_i(div_ready),
 
         .stall(stall)
+
+
     );
 
     div div0(
