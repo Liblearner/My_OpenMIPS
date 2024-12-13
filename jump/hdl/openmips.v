@@ -102,6 +102,9 @@ module openmips(
     pc_reg pc_reg0(
         .clk(clk),
         .rst(rst),
+        .stall(),
+        .branch_target_address_i(),
+        .branch_flag_address_i(),
         .pc(pc),
         .ce(rom_ce_o),
         .stall(stall)
@@ -132,7 +135,13 @@ module openmips(
         .mem_wreg_i(mem_wreg_o),
         .mem_wd_i(mem_wd_o),
         .mem_wdata_i(mem_wdata_o),
-        
+        //转移指令相关
+        .is_in_delayslot_i(),
+        .branch_flag_o(),
+        .branch_target_address_o(),
+        .link_addr_o(),
+        .is_in_delayslot_o(),
+
         .reg1_read_o(id_reg1_read_o),
         .reg2_read_o(id_reg2_read_o),
         .reg1_addr_o(id_reg1_addr_o),
@@ -142,7 +151,7 @@ module openmips(
         .reg1_data_o(id_reg1_data_o),
         .reg2_data_o(id_reg2_data_o),
         .wd_o(id_wd_o),
-        .wreg_o(id_wreg_o)
+        .wreg_o(id_wreg_o),
 
         .stallreq(stallreq_from_id)
     );
@@ -170,13 +179,21 @@ module openmips(
         .id_reg2(id_reg2_data_o),
         .id_wd(id_wd_o),
         .id_wreg(id_wreg_o),
+        .id_link_address(),
+        .id_is_in_delayslot(),
+        .next_inst_in_delayslot_i(),
+
         .ex_aluop(ex_aluop_i),
         .ex_alusel(ex_alusel_i),
         .ex_reg1(ex_reg1_i),
         .ex_reg2(ex_reg2_i),
         .ex_wd(ex_wd_i),
         .ex_wreg(ex_wreg_i),
-        .stall(stall)
+        .stall(stall),
+        ex_link_address(),
+        .ex_is_in_delayslot(),
+        .is_in_delayslot_o()
+
     );
     //ex实例化
     ex ex0(
@@ -212,6 +229,16 @@ module openmips(
         .hilo_temp_o(hilo_temp_o),
         .cnt_o(cnt_o),
 
+        .link_address_i(),
+        .is_in_delayslot_i(),
+
+        .div_opdata1_o(div_opdata1),
+        .div_opdata2_o(div_opdata2),
+        .div_start_o(div_start),
+        .signed_div_o(signed_div),
+        .div_result_i(div_result),
+        .div_ready_i(div_ready),
+
         .stallreq(stallreq_from_ex)
     );
     //ex_mem实例化
@@ -226,7 +253,7 @@ module openmips(
         .ex_lo(ex_lo_o),
         .ex_whilo(ex_whilo_o),
 
-        .hilo_temp_i(hilo_temp_o),
+        .hilo_i(hilo_temp_o),
         .cnt_i(cnt_o),
 
         .mem_wd(mem_wd_i),
@@ -237,19 +264,11 @@ module openmips(
         .mem_lo(mem_lo_i),
         .mem_whilo(mem_whilo_i),
 
-        .hilo_temp_o(hilo_temp_i),
+        .hilo_o(hilo_temp_i),
         .cnt_o(cnt_i),
 
-        .div_opdata1_o(div_opdata1),
-        .div_opdata2_o(div_opdata2),
-        .div_start_o(div_start),
-        .signed_div_o(signed_div),
-        .div_result_i(div_result),
-        .div_ready_i(div_ready),
 
         .stall(stall)
-
-
     );
 
     div div0(

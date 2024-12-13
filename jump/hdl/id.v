@@ -5,7 +5,7 @@ module id(
     input wire rst,
     input wire[`InstAddrBus] pc,
     input wire[`InstBus]     inst,
-//从Regfile中读写，提供给ex阶段
+    //从Regfile中读写，提供给ex阶段
     input wire[`RegBus]  reg1_data_i,//从RegFile预读出的reg数据？
     input wire[`RegBus]  reg2_data_i,
 
@@ -17,12 +17,21 @@ module id(
     input wire[`RegAddrBus] mem_wd_i,
     input wire[`RegBus] mem_wdata_i,
 
+    //转移指令判断是否在延迟槽
+    input wire                    is_in_delayslot_i,
+    //是否发生转移
+    output reg                    branch_flag_o,
+	output reg[`RegBus]           branch_target_address_o,       
+	//转移发生时保存的返回地址
+    output reg[`RegBus]           link_addr_o,
+	output reg                    is_in_delayslot_o,
+
     output reg reg1_read_o,        //提供给RegFile的reg读使能信号与地址
     output reg reg2_read_o,
     output reg[`RegAddrBus] reg1_addr_o,
     output reg[`RegAddrBus] reg2_addr_o,
 
-//送到EX阶段（ALU与Reg）
+    //送到EX阶段（ALU与Reg）
     output reg[`AluOpBus] aluop_o,//ALU操作与选择码
     output reg[`AluSelBus] alusel_o,
 
@@ -40,12 +49,31 @@ wire [5:0] op2 = inst[10:6];//对于R型中的位移指令是一个立即数
 wire [5:0] op3 = inst[5:0];//特征码，在R型指令确定是运算类之后根据这个判断操作类型
 wire [5:0] op4 = inst[20:16];//rt,部分操作数
 
+wire [`RegBus] pc_plus_8;
+wire [`RegBus] pc_plus_4;
+wire [`RegBus] imm_sll2_signedext;
+
+
+
 //保存指令中的立即数
 reg[`RegBus] imm;
 //指示指令是否有效
 reg instvaild;
 
 assign stallreq = `NoStop;
+assign pc_plus_8 = pc + 32'h8;
+assign pc_plus_4 = pc + 32'h4;
+assign imm_sll2_signedext = {{14{inst[15]}}, inst[15:0] , 2'b00};
+
+always @(*) begin
+    if(rst == `RstEnable) begin
+        
+    end
+    else begin
+    end
+end
+
+
 
 /*第一阶段译码,
 向ALU传递操作码与选择码，
@@ -65,6 +93,11 @@ always @(*) begin
         wreg_o <= `WriteDisable;   
         imm <= 32'b0;
         instvaild <= `InstVaild;//重置时设置指令为有效？
+        //转移指令相关
+        link_addr_o <= 32'b0;
+        branch_target_address_o <= 32'b0;
+        branch_flag_o <= `NotBranch;
+        next_inst_in_delayslot <= `NotInDelayslot;
     end
     //先将信号归到默认状态，后面再根据op更新
     else begin
@@ -77,7 +110,12 @@ always @(*) begin
         wd_o <= inst[15:11];
         wreg_o <= `WriteDisable;   
         imm <= 32'b0;
-        instvaild <= `InstInvaild;   
+        instvaild <= `InstInvaild; 
+        //转移指令相关
+        link_addr_o <= `ZeroWord;
+		branch_target_address_o <= `ZeroWord;
+		branch_flag_o <= `NotBranch;	
+		next_inst_in_delayslot_o <= `NotInDelaySlot;  
 
         case(op)
             `EXE_ORI:begin
@@ -350,6 +388,32 @@ always @(*) begin
                                     wreg_o <= `WriteDisable;
                                     instvaild <= `InstVaild;
                             end
+                            `JR:begin
+                                    aluop_o <= `EXE_JR_OP;
+                                    alusel_o <= `EXE_RES_JUMP_BRANCH;
+                                    reg1_read_o <= 1'b1;
+                                    reg2_read_o <= 1'b0;
+                                    wreg_o <= `WriteDisable;
+                                    instvaild <= `InstVaild;
+                                    link_addr_o <= 32'b0;
+                                    branch_target_address_o <= reg1_data_o;
+                                    branch_flag_o <= `Branch;
+                                    next_inst_in_delayslot_o <= `InDelaySlot;
+
+                            end
+                            `JALR:begin
+                                    aluop_o <= `EXE_JALR_OP;
+                                    alusel_o <= `EXE_RES_JUMP_BRANCH;
+                                    reg1_read_o <= 1'b1;
+                                    reg2_read_o <= 1'b0;
+                                    wreg_o <= `WriteEnable;
+                                    instvaild <= `InstVaild;
+                                    link_addr_o <= pc_plus_8;
+                                    branch_target_address_o <= reg1_data_o;
+                                    branch_flag_o <= `Branch;
+                                    next_inst_in_delayslot_o <= `InDelaySlot;
+
+                            end
                             default:begin
                             end
                         endcase//end case op3 inst[5:0]
@@ -359,6 +423,86 @@ always @(*) begin
                     end
                 endcase//end case op2 inst[10:6]
             end// end `SPECIAL
+
+            `j:begin
+            wreg_o <= `WriteDisable;
+            aluop_o <= `EXE_J_OP;
+            alusel_o <= `EXE_RES_JUMP_BRANCH;
+            reg1_read_o <= 1'b0;
+            reg2_read_o <= 1'b0;
+            link_addr_o <= 32'b0;
+            branch_flag_o <= `Branch;
+            next_inst_in_delayslot_o <= `InDelaySlot;
+            instvaild <= `InstVaild;
+            branch_target_address_o <= {pc_plus_4[31:28],inst[25:0],2'b00};
+            end
+            `JAL:begin
+            wreg_o <= `WriteEnable;
+            aluop_o <= `EXE_JAL_OP;
+            alusel_o <= `EXE_RES_JUMP_BRANCH;
+            reg1_read_o <= 1'b0;
+            reg2_read_o <= 1'b0;
+            wd_o <= 5'b11111;
+            link_addr_o <= pc_plus_8;
+            branch_flag_o <= `Branch;
+            next_inst_in_delayslot_o <= `InDelaySlot;
+            instvaild <= `InstVaild;
+            branch_target_address_o <= {pc_plus_4[31:28],inst[25:0],2'b00};
+            end
+            `BEQ:begin
+            wreg_o <= `WriteDisable;
+            aluop_o <= `EXE_BEQ_OP;
+            alusel_o <= `EXE_RES_JUMP_BRANCH;
+            reg1_read_o <= 1'b1;
+            reg2_read_o <= 1'b1;
+            instvaild <= `InstVaild;
+            if(reg1_data_o == reg2_data_o) begin
+                branch_target_address_o <= pc_plus_4 + imm_sll2_signedexted;
+                branch_flag_o <= `Branch;
+                next_inst_in_delayslot_o <= `InDelaySlot;
+            end
+            end
+            `BGTZ:begin
+            wreg_o <= `WriteDis
+            able;
+            aluop_o <= `EXE_BGTZ_OP;
+            alusel_o <= `EXE_RES_JUMP_BRANCH;
+            reg1_read_o <= 1'b1;
+            reg2_read_o <= 1'b0;
+            instvaild <= `InstVaild;
+            if(reg1_data_o[31]!= 1'b0 && reg1_data_o != 32'b0) begin
+                branch_target_address_o <= pc_plus_4 + imm_sll2_signedexted;
+                branch_flag_o <= `Branch;
+                next_inst_in_delayslot_o <= `InDelaySlot;
+            end
+            end
+            `BLEZ:begin
+            wreg_o <= `WriteDisable;
+            aluop_o <= `EXE_BLEZ_OP;
+            alusel_o <= `EXE_RES_JUMP_BRANCH;
+            reg1_read_o <= 1'b1;
+            reg2_read_o <= 1'b0;
+            instvaild <= `InstVaild;
+            if(reg1_data_o[31] == 1'b1 || reg1_data_o == 32'b0)begin
+                branch_flag_o <= `Branch;
+                next_inst_in_delayslot_o <= `InDelaySlot;
+                branch_target_address_o <= pc_plus_4 + imm_sll2_signedexted;
+            end
+            end
+            `BNE:begin
+            wreg_o <= `WriteDisable;
+            aluop_o <= `EXE_BLEZ_OP;
+            alusel_o <= `EXE_RES_JUMP_BRANCH;
+            reg1_read_o <= 1'b1;
+            reg2_read_o <= 1'b1;
+            instvaild <= `InstVaild;
+            if(reg1_data_o != reg2_data_o)begin
+                branch_flag_o <= `Branch;
+                next_inst_in_delayslot_o <= `InDelaySlot;
+                branch_target_address_o <= pc_plus_4 + imm_sll2_signedexted;
+            end
+            end
+
             `SLTI:begin
             aluop_o <= `EXE_SLT_OP;
             alusel_o <= `EXE_RES_ARITHMETIC;
@@ -398,6 +542,68 @@ always @(*) begin
             instvaild <= `InstVaild;
             imm <= {{16{inst[15]}}, inst[15:0]}; 
             wd_o <= inst[20:16]; 
+            end
+            `REGIMM:begin
+                case(op4)
+                    `BGEZ:begin
+                        wreg_o <= `WriteDisable;		
+                        aluop_o <= `EXE_BGEZ_OP;
+		  				alusel_o <= `EXE_RES_JUMP_BRANCH; 
+                        reg1_read_o <= 1'b1;	
+                        reg2_read_o <= 1'b0;
+		  				instvalid <= `InstValid;	
+		  				if(reg1_o[31] == 1'b0) begin
+			    			branch_target_address_o <= pc_plus_4 + imm_sll2_signedext;
+			    			branch_flag_o <= `Branch;
+			    			next_inst_in_delayslot_o <= `InDelaySlot;
+                        end
+                    end
+                    `BGEZAL:begin
+                        wreg_o <= `WriteEnable;		
+                        aluop_o <= `EXE_BGEZAL_OP;
+		  				alusel_o <= `EXE_RES_JUMP_BRANCH; 
+                        reg1_read_o <= 1'b1;	
+                        reg2_read_o <= 1'b0;
+		  				instvalid <= `InstValid;
+                        wd_o <= 5'b11111;
+                        link_addr_o <= pc_plus_8;	
+		  				if(reg1_o[31] == 1'b0) begin
+			    			branch_target_address_o <= pc_plus_4 + imm_sll2_signedext;
+			    			branch_flag_o <= `Branch;
+			    			next_inst_in_delayslot_o <= `InDelaySlot;
+                        end
+                    end
+                    `BLTZ:begin
+                        wreg_o <= `WriteEnable;		
+                        aluop_o <= `EXE_BLTZ_OP;
+		  				alusel_o <= `EXE_RES_JUMP_BRANCH; 
+                        reg1_read_o <= 1'b1;	
+                        reg2_read_o <= 1'b0;
+		  				instvalid <= `InstValid;	
+		  				if(reg1_o[31] == 1'b1) begin
+			    			branch_target_address_o <= pc_plus_4 + imm_sll2_signedext;
+			    			branch_flag_o <= `Branch;
+			    			next_inst_in_delayslot_o <= `InDelaySlot;
+                        end
+                    end
+                    `BLTZAL:begin
+                        wreg_o <= `WriteEnable;		
+                        aluop_o <= `EXE_BLTZAL_OP;
+		  				alusel_o <= `EXE_RES_JUMP_BRANCH; 
+                        reg1_read_o <= 1'b1;	
+                        reg2_read_o <= 1'b0;
+		  				instvalid <= `InstValid;
+                        wd_o <= 5'b11111;
+                        link_addr_o <= pc_plus_8;	
+		  				if(reg1_o[31] == 1'b1) begin
+			    			branch_target_address_o <= pc_plus_4 + imm_sll2_signedext;
+			    			branch_flag_o <= `Branch;
+			    			next_inst_in_delayslot_o <= `InDelaySlot;
+                        end
+                    end
+                    default:begin
+                    end
+                endcase
             end
             `SPECIAL2:begin
                 case(op3)
@@ -447,7 +653,7 @@ always @(*) begin
                     reg1_read_o <= 1'b1;
                     reg2_read_o <= 1'b1;
                     wreg_o <= `WriteDisable;
-                    instvaild <= `Instvaild;
+                    instvaild <= `InstVaild;
                     end
                     `MSUBU:begin
                     aluop_o <= `EXE_SUBU_OP;
@@ -558,5 +764,15 @@ always @(*) begin
         reg2_data_o <= 32'b0;
     end
     end
+
+always @(*) begin
+    if(rst == `RstEnable)begin
+        is_in_delayslot_o <=  `NotInDelaySlot;
+    end
+    else begin
+        is_in_delayslot_o <= is_in_delayslot_i;
+    end
+end
+
 
 endmodule

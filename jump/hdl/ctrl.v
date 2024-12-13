@@ -1,3 +1,4 @@
+`include<defines.v>
 module ctrl(
     input rst,
     input wire stallreq_from_id,

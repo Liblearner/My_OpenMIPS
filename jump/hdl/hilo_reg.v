@@ -1,5 +1,5 @@
 /*
-ÊµÏÖHIÓëLOÌØÊâ¼Ä´æÆ÷£¬¶¨ÒåÆä¶ÁÐ´ÐÐÎª
+å®žçŽ°HIä¸ŽLOç‰¹æ®Šå¯„å­˜å™¨ï¼Œå®šä¹‰å…¶è¯»å†™è¡Œä¸º
 */
 `include "defines.v"
 module hilo_reg (

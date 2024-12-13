@@ -4,17 +4,17 @@ module inst_mem(
     input wire[`InstAddrBus] addr,
     output reg[`InstBus] inst
 );
-//Í¨¹ı¶¨Òå¼Ä´æÆ÷×éµÄ·½Ê½¶¨ÒåROM
+//é€šè¿‡å®šä¹‰å¯„å­˜å™¨ç»„çš„æ–¹å¼å®šä¹‰ROM
 reg[`InstBus] inst_mem[0:`InstMemNum-1];
 
-//Ê¹ÓÃrom.dataÀ´initial ROM¡£µ«initial²»¿ÉÒÔ±»×ÛºÏ
+//ä½¿ç”¨rom.dataæ¥initial ROMã€‚ä½†initialä¸å¯ä»¥è¢«ç»¼åˆ
 initial $readmemh ("inst_mem.data", inst_mem);
 
 always @(*) begin
     if(ce == `ChipDisable)
         inst <= 32'b0;
     else begin
-        inst <= inst_mem[addr[`InstMemNumLog2 + 1 : 2]];//½«µØÖ·ÓÒÒÆ2Î»°´×Ö¶Á³ö
+        inst <= inst_mem[addr[`InstMemNumLog2 + 1 : 2]];//å°†åœ°å€å³ç§»2ä½æŒ‰å­—è¯»å‡º
     end
 end
 

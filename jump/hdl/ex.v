@@ -32,6 +32,10 @@ module ex(
     input wire[`DoubleRegBus] div_result_i,
     input wire div_ready_i,
 
+    //跳转指令相关
+    input wire[`RegBus] link_address_i,
+    input wire is_in_delayslot_i,
+
     output reg[`RegBus] wdata,
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o,
@@ -58,8 +62,6 @@ module ex(
     reg[`RegBus] moveres;
     reg[`RegBus] HI;
     reg[`RegBus] LO;
-
-    assign stallreq = `NoStop;
 
     //运算用的变量
     wire ov_sum;                    //保存溢出情况
@@ -353,6 +355,9 @@ always @(*) begin
     end
     `EXE_RES_MUL:begin
         wdata <= mulres[31:0];
+    end
+    `EXE_RES_JUMP_BRANCH: begin
+        wdata <= link_address_i;
     end
     default:
         wdata <= 32'b0;

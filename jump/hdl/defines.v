@@ -75,6 +75,20 @@
 `define EXE_NOP         6'b000000
 `define SSNOP           32'b0
 
+//转移类指令
+`define J  6'b000010
+`define JAL  6'b000011
+`define JALR  6'b001001
+`define JR  6'b001000
+`define BEQ  6'b000100
+`define BGEZ  5'b00001
+`define BGEZAL  5'b10001
+`define BGTZ  6'b000111
+`define BLEZ  6'b000110
+`define BLTZ  5'b00000
+`define BLTZAL  5'b10000
+`define BNE  6'b000101
+
 //div相关
 `define DivFree         2'b00
 `define DivByZero       2'b01
@@ -151,16 +165,37 @@
 `define EXE_DIV_OP      8'b00011010
 `define EXE_DIVU_OP     8'b00011011
 
+`define EXE_J_OP        8'b01001111
+`define EXE_JAL_OP      8'b01010000
+`define EXE_JALR_OP     8'b00001001
+`define EXE_JR_OP       8'b00001000
+`define EXE_BEQ_OP      8'b01010001
+`define EXE_BGEZ_OP     8'b01000001
+`define EXE_BGEZL_OP    8'b01001011
+`define EXE_BGTZ_OP     8'b01010100
+`define EXE_BLEZ_OP     8'b01010011
+`define EXE_BLTZ_OP     8'b01000000
+`define EXE_BLTZAL_OP   8'b01001010
+`define EXE_BNE_OP      8'b01010010
+
+
 `define EXE_RES_LOGIC   3'b001    //ALU各选择码
 `define EXE_RES_SHIFT   3'b010
 `define EXE_RES_MOVE    3'b011
 `define EXE_RES_ARITHMETIC 3'b100
 `define EXE_RES_MUL     3'b101
+`define EXE_res_jump_branch 3'b110
 
 `define EXE_RES_NOP     3'b000 
 
 
+
+//跳转指令
+`define Branch          1'b1
+`define NotBranch       1'b0
+`define InDelaySlot     1'b1
+`define NotInDelaySlot  1'b0
+
 //ROM相关
 `define InstMemNumLog2 17       //ROM按字寻址地址线数
 `define InstMemNum 131072       //ROM中字个数=2^(17)
-

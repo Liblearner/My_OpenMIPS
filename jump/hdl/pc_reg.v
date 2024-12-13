@@ -6,6 +6,8 @@ module pc_reg(
     input wire rst,
     input wire[5:0] stall,//来自控制模块CTRL
 
+    input wire branch_target_address_i,
+    input wire [`RegBus] branch_flag_address_i,
     output reg[`InstAddrBus] pc,
     output reg ce
 );
@@ -23,9 +25,13 @@ end
 always @(posedge clk) begin
     if(ce == `ChipDisable)
         pc <= 32'b0;
-    else if(stall[0] == `NoStop)
-        pc <= pc+4'h4;
-
+    else if(stall[0] == `NoStop) begin
+        if(branch_target_address_i == `Branch)begin
+            pc <= branch_flag_address_i
+        end
+        else
+            pc <= pc+4'h4;
+    end
 end
 
 
