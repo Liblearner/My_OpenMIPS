@@ -21,6 +21,10 @@ module openmips(
     wire [`RegBus] id_reg2_data_o;
     wire [`RegAddrBus] id_wd_o;
     wire id_wreg_o;
+    wire is_in_delayslot_i;     //id_ex输出
+    wire [`RegBus] id_link_address_o;
+    wire id_is_in_delayslot_o;     //id_ex输出
+    wire next_inst_in_delayslot_o;  //id输出
 
     //连接id_Ex与ex之间的变量
     wire [`AluOpBus] ex_aluop_i;
@@ -29,6 +33,9 @@ module openmips(
     wire [`RegBus] ex_reg2_i;
     wire [`RegAddrBus] ex_wd_i;
     wire ex_wreg_i;
+    wire [`RegBus] ex_link_address_i;
+    wire ex_is_in_delayslot_i;
+
 
     //连接ex与ex_mem之间的变量
     wire [`RegBus] ex_wdata_o;
@@ -97,14 +104,16 @@ module openmips(
     wire signed_div;
     wire div_start;
 
+    //连接PC与id模块
+    wire id_branch_address_o;
+    wire[`RegBus] branch_target_address;
 
     //模块实例化
     pc_reg pc_reg0(
         .clk(clk),
         .rst(rst),
-        .stall(),
-        .branch_target_address_i(),
-        .branch_flag_address_i(),
+        .branch_target_address_i(branch_target_address),
+        .branch_flag_address_i(id_branch_address_o),
         .pc(pc),
         .ce(rom_ce_o),
         .stall(stall)
@@ -136,11 +145,12 @@ module openmips(
         .mem_wd_i(mem_wd_o),
         .mem_wdata_i(mem_wdata_o),
         //转移指令相关
-        .is_in_delayslot_i(),
-        .branch_flag_o(),
-        .branch_target_address_o(),
-        .link_addr_o(),
-        .is_in_delayslot_o(),
+        .is_in_delayslot_i(is_in_delayslot_i),
+        .branch_flag_o(id_branch_address_o),
+        .branch_target_address_o(branch_target_address),
+        .link_addr_o(id_link_address_o),
+        .is_in_delayslot_o(id_is_in_delayslot_o),
+        .next_inst_in_delayslot_o(next_inst_in_delayslot_o),
 
         .reg1_read_o(id_reg1_read_o),
         .reg2_read_o(id_reg2_read_o),
@@ -179,9 +189,9 @@ module openmips(
         .id_reg2(id_reg2_data_o),
         .id_wd(id_wd_o),
         .id_wreg(id_wreg_o),
-        .id_link_address(),
-        .id_is_in_delayslot(),
-        .next_inst_in_delayslot_i(),
+        .id_link_address(id_link_address_o),
+        .id_is_in_delayslot(id_is_in_delayslot_o),
+        .next_inst_in_delayslot_i(next_inst_in_delayslot_o),
 
         .ex_aluop(ex_aluop_i),
         .ex_alusel(ex_alusel_i),
@@ -190,9 +200,9 @@ module openmips(
         .ex_wd(ex_wd_i),
         .ex_wreg(ex_wreg_i),
         .stall(stall),
-        ex_link_address(),
-        .ex_is_in_delayslot(),
-        .is_in_delayslot_o()
+        .ex_link_address(ex_link_address_i),
+        .ex_is_in_delayslot(ex_is_in_delayslot_i),
+        .is_in_delayslot_o(is_in_delayslot_i)
 
     );
     //ex实例化
@@ -229,8 +239,8 @@ module openmips(
         .hilo_temp_o(hilo_temp_o),
         .cnt_o(cnt_o),
 
-        .link_address_i(),
-        .is_in_delayslot_i(),
+        .link_address_i(ex_link_address_i),
+        .is_in_delayslot_i(ex_is_in_delayslot_i),
 
         .div_opdata1_o(div_opdata1),
         .div_opdata2_o(div_opdata2),

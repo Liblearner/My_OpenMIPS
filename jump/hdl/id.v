@@ -26,6 +26,8 @@ module id(
     output reg[`RegBus]           link_addr_o,
 	output reg                    is_in_delayslot_o,
 
+    output reg                    next_inst_in_delayslot_o,
+
     output reg reg1_read_o,        //提供给RegFile的reg读使能信号与地址
     output reg reg2_read_o,
     output reg[`RegAddrBus] reg1_addr_o,
@@ -63,7 +65,7 @@ reg instvaild;
 assign stallreq = `NoStop;
 assign pc_plus_8 = pc + 32'h8;
 assign pc_plus_4 = pc + 32'h4;
-assign imm_sll2_signedext = {{14{inst[15]}}, inst[15:0] , 2'b00};
+assign imm_sll2_signedexted = {{14{inst[15]}}, inst[15:0] , 2'b00};
 
 always @(*) begin
     if(rst == `RstEnable) begin
@@ -97,7 +99,7 @@ always @(*) begin
         link_addr_o <= 32'b0;
         branch_target_address_o <= 32'b0;
         branch_flag_o <= `NotBranch;
-        next_inst_in_delayslot <= `NotInDelayslot;
+        next_inst_in_delayslot_o <= `NotInDelaySlot;
     end
     //先将信号归到默认状态，后面再根据op更新
     else begin
@@ -424,7 +426,7 @@ always @(*) begin
                 endcase//end case op2 inst[10:6]
             end// end `SPECIAL
 
-            `j:begin
+            `J:begin
             wreg_o <= `WriteDisable;
             aluop_o <= `EXE_J_OP;
             alusel_o <= `EXE_RES_JUMP_BRANCH;
@@ -463,8 +465,7 @@ always @(*) begin
             end
             end
             `BGTZ:begin
-            wreg_o <= `WriteDis
-            able;
+            wreg_o <= `WriteDisable;
             aluop_o <= `EXE_BGTZ_OP;
             alusel_o <= `EXE_RES_JUMP_BRANCH;
             reg1_read_o <= 1'b1;
@@ -551,8 +552,8 @@ always @(*) begin
 		  				alusel_o <= `EXE_RES_JUMP_BRANCH; 
                         reg1_read_o <= 1'b1;	
                         reg2_read_o <= 1'b0;
-		  				instvalid <= `InstValid;	
-		  				if(reg1_o[31] == 1'b0) begin
+		  				instvaild <= `InstVaild;	
+		  				if(reg1_data_o[31] == 1'b0) begin
 			    			branch_target_address_o <= pc_plus_4 + imm_sll2_signedext;
 			    			branch_flag_o <= `Branch;
 			    			next_inst_in_delayslot_o <= `InDelaySlot;
@@ -564,10 +565,10 @@ always @(*) begin
 		  				alusel_o <= `EXE_RES_JUMP_BRANCH; 
                         reg1_read_o <= 1'b1;	
                         reg2_read_o <= 1'b0;
-		  				instvalid <= `InstValid;
+		  				instvaild <= `InstVaild;
                         wd_o <= 5'b11111;
                         link_addr_o <= pc_plus_8;	
-		  				if(reg1_o[31] == 1'b0) begin
+		  				if(reg1_data_o[31] == 1'b0) begin
 			    			branch_target_address_o <= pc_plus_4 + imm_sll2_signedext;
 			    			branch_flag_o <= `Branch;
 			    			next_inst_in_delayslot_o <= `InDelaySlot;
@@ -579,8 +580,8 @@ always @(*) begin
 		  				alusel_o <= `EXE_RES_JUMP_BRANCH; 
                         reg1_read_o <= 1'b1;	
                         reg2_read_o <= 1'b0;
-		  				instvalid <= `InstValid;	
-		  				if(reg1_o[31] == 1'b1) begin
+		  				instvaild <= `InstVaild;	
+		  				if(reg1_data_o[31] == 1'b1) begin
 			    			branch_target_address_o <= pc_plus_4 + imm_sll2_signedext;
 			    			branch_flag_o <= `Branch;
 			    			next_inst_in_delayslot_o <= `InDelaySlot;
@@ -592,10 +593,10 @@ always @(*) begin
 		  				alusel_o <= `EXE_RES_JUMP_BRANCH; 
                         reg1_read_o <= 1'b1;	
                         reg2_read_o <= 1'b0;
-		  				instvalid <= `InstValid;
+		  				instvaild <= `InstVaild;
                         wd_o <= 5'b11111;
                         link_addr_o <= pc_plus_8;	
-		  				if(reg1_o[31] == 1'b1) begin
+		  				if(reg1_data_o[31] == 1'b1) begin
 			    			branch_target_address_o <= pc_plus_4 + imm_sll2_signedext;
 			    			branch_flag_o <= `Branch;
 			    			next_inst_in_delayslot_o <= `InDelaySlot;

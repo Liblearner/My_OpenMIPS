@@ -1,0 +1,351 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dD:/ModelSim
+vctrl
+Z0 !s110 1734250791
+!i10b 1
+!s100 5P6nBCK8ll6E=Cgb=be?]3
+I<P[DTWaPXgU;e^OXYDbM@3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dE:/Project/Digital_IC/my_OpenMIPS/jump/sim
+w1734105900
+8E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/ctrl.v
+FE:/Project/Digital_IC/my_OpenMIPS/jump/hdl/ctrl.v
+L0 2
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1734250791.000000
+!s107 defines.v|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/ctrl.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/ctrl.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+vdiv
+R0
+!i10b 1
+!s100 OO;`z3WaaBP7XGmN<3mED3
+ISnTCWI5@XejOO_b2QWETK0
+R1
+R2
+w1734104500
+8E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/div.v
+FE:/Project/Digital_IC/my_OpenMIPS/jump/hdl/div.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 defines.v|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/div.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/div.v|
+!i113 1
+R5
+R6
+vex
+Z7 !s110 1734250792
+!i10b 1
+!s100 Al7`z6FeO=h;KSVRRXmID3
+IQoeeNnLYi0QRcT<9@1DQZ3
+R1
+R2
+w1734249898
+8E:\Project\Digital_IC\my_OpenMIPS\jump\hdl\ex.v
+FE:\Project\Digital_IC\my_OpenMIPS\jump\hdl\ex.v
+L0 3
+R3
+r1
+!s85 0
+31
+Z8 !s108 1734250792.000000
+!s107 defines.v|E:\Project\Digital_IC\my_OpenMIPS\jump\hdl\ex.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:\Project\Digital_IC\my_OpenMIPS\jump\hdl\ex.v|
+!i113 1
+R5
+R6
+vex_mem
+R7
+!i10b 1
+!s100 [c]fc3OiOn2VMHlW0BEEz3
+IlhHOTDBJDW;:0;YClU5aE3
+R1
+R2
+w1734104458
+8E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/ex_mem.v
+FE:/Project/Digital_IC/my_OpenMIPS/jump/hdl/ex_mem.v
+L0 2
+R3
+r1
+!s85 0
+31
+R8
+!s107 defines.v|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/ex_mem.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/ex_mem.v|
+!i113 1
+R5
+R6
+vhilo_reg
+Z9 !s110 1734250789
+!i10b 1
+!s100 ]IIMiMe7<8V5_IF@D05^`1
+I_0_`3ZF3]aC>^C9Cz5YWi0
+R1
+R2
+w1734102783
+8E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/hilo_reg.v
+FE:/Project/Digital_IC/my_OpenMIPS/jump/hdl/hilo_reg.v
+L0 5
+R3
+r1
+!s85 0
+31
+Z10 !s108 1734250789.000000
+!s107 defines.v|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/hilo_reg.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/hilo_reg.v|
+!i113 1
+R5
+R6
+vid
+R9
+!i10b 1
+!s100 8?a;j[SSRi_P^HhJb2`YM2
+I6C>JHKP_Z@g7lhS4jX;R@1
+R1
+R2
+w1734250780
+8E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/id.v
+FE:/Project/Digital_IC/my_OpenMIPS/jump/hdl/id.v
+L0 3
+R3
+r1
+!s85 0
+31
+R10
+!s107 defines.v|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/id.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/id.v|
+!i113 1
+R5
+R6
+vid_ex
+R9
+!i10b 1
+!s100 mX=1^V0oh?MTY5]`GEPOQ3
+IDN;8bked4aUFZVL:ehO@H3
+R1
+R2
+w1734250476
+8E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/id_ex.v
+FE:/Project/Digital_IC/my_OpenMIPS/jump/hdl/id_ex.v
+L0 3
+R3
+r1
+!s85 0
+31
+R10
+!s107 defines.v|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/id_ex.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/id_ex.v|
+!i113 1
+R5
+R6
+vif_id
+R9
+!i10b 1
+!s100 PA<]FKaXbjG<;NffolmX`3
+IVX=J:lYXc9WM9dDAS7JJ>2
+R1
+R2
+w1734104209
+8E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/if_id.v
+FE:/Project/Digital_IC/my_OpenMIPS/jump/hdl/if_id.v
+L0 3
+R3
+r1
+!s85 0
+31
+R10
+!s107 defines.v|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/if_id.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/if_id.v|
+!i113 1
+R5
+R6
+vinst_mem
+R9
+!i10b 1
+!s100 Li97fWa?k4c_5^3`b]5j@0
+I1MF03Z7Xnm8m8j[^VCNOS0
+R1
+R2
+w1734102751
+8E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/inst_mem.v
+FE:/Project/Digital_IC/my_OpenMIPS/jump/hdl/inst_mem.v
+L0 2
+R3
+r1
+!s85 0
+31
+R10
+!s107 defines.v|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/inst_mem.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/inst_mem.v|
+!i113 1
+R5
+R6
+vmem
+R9
+!i10b 1
+!s100 8CLDA8[ZQcnLO9WHz8:ka2
+IoS5hG4mdXL[Td110IiagG1
+R1
+R2
+w1734103568
+8E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/mem.v
+FE:/Project/Digital_IC/my_OpenMIPS/jump/hdl/mem.v
+L0 5
+R3
+r1
+!s85 0
+31
+R10
+!s107 defines.v|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/mem.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/mem.v|
+!i113 1
+R5
+R6
+vmem_wb
+Z11 !s110 1734250790
+!i10b 1
+!s100 aJ8:klmBk3fF5Tfb>WQ4A2
+I`08j:PX?X@C4=TVz7jNQG3
+R1
+R2
+w1734102769
+8E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/mem_wb.v
+FE:/Project/Digital_IC/my_OpenMIPS/jump/hdl/mem_wb.v
+L0 2
+R3
+r1
+!s85 0
+31
+Z12 !s108 1734250790.000000
+!s107 defines.v|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/mem_wb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/mem_wb.v|
+!i113 1
+R5
+R6
+vopenmips
+R11
+!i10b 1
+!s100 zGTnTXokV38g>he=K3dR;3
+INdn_]3Dmk9QfZJj1F6hX<0
+R1
+R2
+w1734250784
+8E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/openmips.v
+FE:/Project/Digital_IC/my_OpenMIPS/jump/hdl/openmips.v
+L0 3
+R3
+r1
+!s85 0
+31
+R12
+!s107 defines.v|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/openmips.v|
+!s90 -reportprogress|300|-work|work|-stats=none|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/openmips.v|
+!i113 1
+R5
+R6
+vopenmips_min_sopc
+R11
+!i10b 1
+!s100 DD=f<f6k7nzi`Y>P7XB8O1
+IKoKf:RZWbWMhoDB:ePjX]2
+R1
+R2
+w1700744826
+8E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/openmips_min_sopc.v
+FE:/Project/Digital_IC/my_OpenMIPS/jump/hdl/openmips_min_sopc.v
+L0 2
+R3
+r1
+!s85 0
+31
+R12
+!s107 defines.v|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/openmips_min_sopc.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/Digital_IC/my_OpenMIPS/jump/hdl|-stats=none|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/openmips_min_sopc.v|
+!i113 1
+R5
+Z13 !s92 -work work +incdir+E:/Project/Digital_IC/my_OpenMIPS/jump/hdl
+R6
+vopenmips_min_sopc_tb
+R11
+!i10b 1
+!s100 BLj^i[S4LQiWZW>gToWQU0
+I8g<_582Fh5NA_PRLdkET50
+R1
+R2
+w1707213986
+8E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/openmips_min_sopc_t.v
+FE:/Project/Digital_IC/my_OpenMIPS/jump/hdl/openmips_min_sopc_t.v
+L0 36
+R3
+r1
+!s85 0
+31
+R12
+!s107 defines.v|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/openmips_min_sopc_t.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/Digital_IC/my_OpenMIPS/jump/hdl|-stats=none|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/openmips_min_sopc_t.v|
+!i113 1
+R5
+R13
+R6
+vpc_reg
+R0
+!i10b 1
+!s100 kCimfUFK8AakDznY@KL6H0
+I9@B[ICo=48:5mX1Bln=_N0
+R1
+R2
+w1734250747
+8E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/pc_reg.v
+FE:/Project/Digital_IC/my_OpenMIPS/jump/hdl/pc_reg.v
+L0 3
+R3
+r1
+!s85 0
+31
+R12
+!s107 defines.v|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/pc_reg.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/Digital_IC/my_OpenMIPS/jump/hdl|-stats=none|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/pc_reg.v|
+!i113 1
+R5
+R13
+R6
+vRegfile
+R0
+!i10b 1
+!s100 X8YS0]FZhU5GLXNS<eh:W0
+IDIfizfg<jI^SzGL7PHMdc3
+R1
+R2
+w1734104306
+8E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/Regfile.v
+FE:/Project/Digital_IC/my_OpenMIPS/jump/hdl/Regfile.v
+L0 5
+R3
+r1
+!s85 0
+31
+R4
+!s107 defines.v|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/Regfile.v|
+!s90 -reportprogress|300|-work|work|+incdir+E:/Project/Digital_IC/my_OpenMIPS/jump/hdl|-stats=none|E:/Project/Digital_IC/my_OpenMIPS/jump/hdl/Regfile.v|
+!i113 1
+R5
+R13
+R6
+n@regfile

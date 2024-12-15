@@ -25,7 +25,7 @@ module id_ex(
     output reg[`RegBus] ex_reg1,
     output reg[`RegBus] ex_reg2,
     output reg ex_wreg,
-    output reg[`RegAddrBus] ex_wd
+    output reg[`RegAddrBus] ex_wd,
 
     //跳转相关，送到EX
     output reg[`RegBus] ex_link_address,

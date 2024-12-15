@@ -332,7 +332,6 @@ end
 //第二阶段，根据alusel制定类型选择一个结果作为最终结果
 always @(*) begin
     wd_o <= wd_i;
-    wreg_o <= wreg_i;
 
     if(((aluop == `EXE_ADD_OP) || (aluop == `EXE_ADDI_OP) || 
             (aluop == `EXE_SUB_OP)) && (ov_sum == 1'b1))
